@@ -55,7 +55,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidViewBinding
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.compose.garden.GardenScreen
@@ -81,7 +81,7 @@ fun HomeScreen(
     onPlantClick: (Plant) -> Unit = {},
     onPageChange: (SunflowerPage) -> Unit = {},
     onAttached: (Toolbar) -> Unit = {},
-    plantListViewModel: PlantListViewModel = hiltViewModel()
+    plantListViewModel: PlantListViewModel = viewModel()
 ) {
     val activity = (LocalContext.current as AppCompatActivity)
 
@@ -105,8 +105,8 @@ fun HomePagerScreen(
     onPageChange: (SunflowerPage) -> Unit,
     modifier: Modifier = Modifier,
     pages: Array<SunflowerPage> = SunflowerPage.values(),
-    gardenPlantingListViewModel: GardenPlantingListViewModel = hiltViewModel(),
-    plantListViewModel: PlantListViewModel = hiltViewModel(),
+    gardenPlantingListViewModel: GardenPlantingListViewModel = viewModel(),
+    plantListViewModel: PlantListViewModel = viewModel(),
 ) {
     val gardenPlants by gardenPlantingListViewModel.plantAndGardenPlantings.collectAsState(initial = emptyList())
     val plants by plantListViewModel.plants.observeAsState(initial = emptyList())

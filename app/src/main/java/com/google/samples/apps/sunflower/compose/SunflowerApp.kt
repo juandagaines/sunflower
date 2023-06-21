@@ -23,7 +23,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ShareCompat
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -42,7 +41,7 @@ import com.google.samples.apps.sunflower.viewmodels.PlantListViewModel
 fun SunflowerApp(
     onPageChange: (SunflowerPage) -> Unit = {},
     onAttached: (Toolbar) -> Unit = {},
-    plantListViewModel: PlantListViewModel = hiltViewModel(),
+    plantListViewModel: PlantListViewModel = viewModel(),
 ) {
     val navController = rememberNavController()
     SunFlowerNavHost(
@@ -58,7 +57,7 @@ fun SunFlowerNavHost(
     navController: NavHostController,
     onPageChange: (SunflowerPage) -> Unit = {},
     onAttached: (Toolbar) -> Unit = {},
-    plantListViewModel: PlantListViewModel = hiltViewModel(),
+    plantListViewModel: PlantListViewModel = viewModel(),
 ) {
     val activity = (LocalContext.current as Activity)
     NavHost(navController = navController, startDestination = "home") {
