@@ -38,11 +38,6 @@ class DatabaseModule {
     }
 
     @Provides
-    fun providePlantDao(appDatabase: AppDatabase): PlantDao {
-        return appDatabase.plantDao()
-    }
-
-    @Provides
     fun provideGardenPlantingDao(appDatabase: AppDatabase): GardenPlantingDao {
         return appDatabase.gardenPlantingDao()
     }
